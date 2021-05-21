@@ -1,0 +1,29 @@
+PrintWriter out=response.getWriter();"
+ "out.print("<html><head><style='text/css'>{}</style></head>")";
+-------------------------
+try (PrintWriter out = response.getWriter()) {
+  out.println("<!DOCTYPE html>");
+  out.println("<html>");
+  out.println("<head>");
+  out.println("<meta charset=\"utf-8\">");  // escape the quote marks
+  out.println("<title>Glassfish HTML Testing</title>");
+  out.println("<style>");     // start style
+  // enclose style attributes withing the <style> </style> elements
+  out.println("h1 {");        // note leading brace
+  out.println("color:blue;");
+  out.println("background-color:yellow;");
+  out.println("border: 1px solid black;");
+  out.println("}");          // note trailing brace for h1 style
+  // add styles for other elements here using similar structure
+  // note that separate lines are used for clarity -
+  // all of the above could be one println
+  out.println("</style>");  // terminate style
+  out.println("</head>");
+  out.println("<body>");
+  out.println("<h1>Servlet located at " + request.getContextPath() + "</h1>");
+  out.println("</body>");
+  out.println("</html>");
+}  // end of try-with-resources block
+
+
+-------------------------------------------
